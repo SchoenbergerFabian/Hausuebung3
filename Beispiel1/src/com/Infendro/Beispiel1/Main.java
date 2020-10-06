@@ -25,7 +25,7 @@ public class Main {
                 String[] args = line.split(";");
                 weapons.add(new Weapon(
                         args[0],
-                        WeaponType.valueOf(args[1]),
+                        CombatType.valueOf(args[1]),
                         DamageType.valueOf(args[2]),
                         Integer.parseInt(args[3]),
                         Integer.parseInt(args[4]),

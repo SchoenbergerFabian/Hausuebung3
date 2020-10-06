@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 public class Weapon {
     private String name;
-    private WeaponType weaponType;
+    private CombatType combatType;
     private DamageType damageType;
     private int damage;
     private int speed;
@@ -15,9 +15,9 @@ public class Weapon {
     public Weapon() {
     }
 
-    public Weapon(String name, WeaponType weaponType, DamageType damageType, int damage, int speed, int strength, int value) {
+    public Weapon(String name, CombatType combatType, DamageType damageType, int damage, int speed, int strength, int value) {
         this.name = name;
-        this.weaponType = weaponType;
+        this.combatType = combatType;
         this.damageType = damageType;
         this.damage = damage;
         this.speed = speed;
@@ -25,9 +25,27 @@ public class Weapon {
         this.value = value;
     }
 
-    public static List<Weapon> sortMaxToMinDamage(List<Weapon> weapons){
+    public static List<Weapon> sortDamage(List<Weapon> weapons){
         return weapons.stream()
                 .sorted((w1,w2)-> w1.getDamage()-w2.getDamage())
+                .collect(Collectors.toList());
+    }
+
+    public static List<Weapon> sortCombatType_DamageType_Name(List<Weapon> weapons){
+        return weapons.stream()
+                .sorted((w1,w2)-> {
+                    int compare = w1.getCombatType().toString().compareTo(w2.getCombatType().toString());
+                    if(compare==0){
+                        compare = w1.getDamageType().toString().compareTo(w2.getDamageType().toString());
+                        if(compare==0){
+                            return w1.getName().compareTo(w2.getName());
+                        }else{
+                            return compare;
+                        }
+                    }else{
+                        return compare;
+                    }
+                })
                 .collect(Collectors.toList());
     }
 
@@ -39,12 +57,12 @@ public class Weapon {
         this.name = name;
     }
 
-    public WeaponType getWeaponType() {
-        return weaponType;
+    public CombatType getCombatType() {
+        return combatType;
     }
 
-    public void setWeaponType(WeaponType weaponType) {
-        this.weaponType = weaponType;
+    public void setWeaponType(CombatType combatType) {
+        this.combatType = combatType;
     }
 
     public DamageType getDamageType() {
@@ -85,5 +103,18 @@ public class Weapon {
 
     public void setValue(int value) {
         this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return "Weapon{" +
+                "name='" + name + '\'' +
+                ", combatType=" + combatType +
+                ", damageType=" + damageType +
+                ", damage=" + damage +
+                ", speed=" + speed +
+                ", strength=" + strength +
+                ", value=" + value +
+                '}';
     }
 }
