@@ -15,7 +15,7 @@ class WeaponTest {
         weapons = Main.sortDamage(weapons);
 
         for(int i = 0; i<weapons.size()-1; i++){
-            if(weapons.get(i).getDamage()>weapons.get(i+1).getDamage()){
+            if(weapons.get(i).getDamage()<weapons.get(i+1).getDamage()){
                 fail("Sorting failed!");
             }
         }
