@@ -30,25 +30,15 @@ public class Streams {
     }
     
     public Weapon findWeaponWithLowestDamage(List<Weapon> weapons) {
-        Optional<Weapon> min = weapons.stream()
-                .min((w1,w2) -> w1.getDamage()-w2.getDamage());
-        
-        if(min.isPresent()){
-            return min.get();
-        }else{
-            return null;
-        }
+        return weapons.stream()
+                .min((w1,w2) -> w1.getDamage()-w2.getDamage())
+                .orElse(null);
     }
     
     public Weapon findWeaponWithHighestStrength(List<Weapon> weapons) {
-        Optional<Weapon> max = weapons.stream()
-                .max((w1,w2) -> w1.getMinStrength()-w2.getMinStrength());
-        
-        if(max.isPresent()){
-            return max.get();
-        }else{
-            return null;
-        }
+        return weapons.stream()
+                .max((w1,w2) -> w1.getMinStrength()-w2.getMinStrength())
+                .orElse(null);
     }
     
     public List<Weapon> collectMissileWeapons(List<Weapon> weapons) {
@@ -58,15 +48,9 @@ public class Streams {
     }
     
     public Weapon findWeaponWithLongestName(List<Weapon> weapons) {
-        Optional<Weapon> longestName = weapons.stream()
-                .max((w1,w2) -> w1.getName().length()-w2.getName().length());
-        
-        if(longestName.isPresent()){
-            return longestName.get();
-        }else{
-            return null;
-        }
-        
+        return weapons.stream()
+                .max((w1,w2) -> w1.getName().length()-w2.getName().length())
+                .orElse(null);  
     }
     
     public List<String> toNameList(List<Weapon> weapons) {
