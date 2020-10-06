@@ -1,3 +1,5 @@
+package com.Infendro.Beispiel1;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -5,16 +7,19 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         List<Weapon> weapons = initWeapons();
+        weapons.stream()
+        .mapToInt(Weapon::getDamage)
+        .forEach(System.out::println);
     }
 
-    private static List<Weapon> initWeapons(){
+    public static List<Weapon> initWeapons(){
         List<Weapon> weapons = new ArrayList<>();
 
         try {
             BufferedReader filereader = new BufferedReader(new FileReader(new File("weapons.csv")));
 
             String line = filereader.readLine();
-            //skip first line
+            //skip first line!
             line = filereader.readLine();
             while(line!=null){
                 String[] args = line.split(";");
@@ -36,4 +41,5 @@ public class Main {
 
         return weapons;
     }
+
 }

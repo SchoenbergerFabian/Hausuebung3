@@ -1,3 +1,8 @@
+package com.Infendro.Beispiel1;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Weapon {
     private String name;
     private WeaponType weaponType;
@@ -18,6 +23,12 @@ public class Weapon {
         this.speed = speed;
         this.strength = strength;
         this.value = value;
+    }
+
+    public static List<Weapon> sortMaxToMinDamage(List<Weapon> weapons){
+        return weapons.stream()
+                .sorted((w1,w2)-> w1.getDamage()-w2.getDamage())
+                .collect(Collectors.toList());
     }
 
     public String getName() {
