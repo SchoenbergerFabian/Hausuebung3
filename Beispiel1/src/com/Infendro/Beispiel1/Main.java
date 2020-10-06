@@ -3,6 +3,7 @@ package com.Infendro.Beispiel1;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -42,4 +43,27 @@ public class Main {
         return weapons;
     }
 
+    public static List<Weapon> sortDamage(List<Weapon> weapons){
+        return weapons.stream()
+                .sorted((w1,w2)-> w1.getDamage()-w2.getDamage())
+                .collect(Collectors.toList());
+    }
+
+    public static List<Weapon> sortCombatType_DamageType_Name(List<Weapon> weapons){
+        return weapons.stream()
+                .sorted((w1,w2)-> {
+                    int compare = w1.getCombatType().toString().compareTo(w2.getCombatType().toString());
+                    if(compare==0){
+                        compare = w1.getDamageType().toString().compareTo(w2.getDamageType().toString());
+                        if(compare==0){
+                            return w1.getName().compareTo(w2.getName());
+                        }else{
+                            return compare;
+                        }
+                    }else{
+                        return compare;
+                    }
+                })
+                .collect(Collectors.toList());
+    }
 }

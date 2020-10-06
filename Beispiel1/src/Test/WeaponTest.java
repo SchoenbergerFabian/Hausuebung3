@@ -12,7 +12,7 @@ class WeaponTest {
     @org.junit.jupiter.api.Test
     void sortDamage() {
         List<Weapon> weapons = Main.initWeapons();
-        weapons = Weapon.sortDamage(weapons);
+        weapons = Main.sortDamage(weapons);
 
         for(int i = 0; i<weapons.size()-1; i++){
             if(weapons.get(i).getDamage()>weapons.get(i+1).getDamage()){
@@ -24,7 +24,7 @@ class WeaponTest {
     @org.junit.jupiter.api.Test
     void sortCombatType_DamageType_Name() {
         List<Weapon> weapons = Main.initWeapons();
-        weapons = Weapon.sortCombatType_DamageType_Name(weapons);
+        weapons = Main.sortCombatType_DamageType_Name(weapons);
 
         for(int i = 0; i<weapons.size()-1; i++){
             Weapon w1 = weapons.get(i);
