@@ -13,9 +13,9 @@ import java.util.Arrays;
  */
 public class RandomStringArray {
     public String[] getRandomStringArray(int amount,int length){
-        return (String[]) Arrays.stream(new String[amount])
+        return Arrays.stream(new String[amount])
                 .map(string -> getRandomString(length))
-                .toArray();
+                .toArray(String[]::new);
     }
     
     private String getRandomString(int length){
