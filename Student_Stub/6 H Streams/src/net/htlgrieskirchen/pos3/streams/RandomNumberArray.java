@@ -6,6 +6,7 @@
 package net.htlgrieskirchen.pos3.streams;
 
 import java.util.Arrays;
+import java.util.Random;
 
 /**
  *
@@ -19,6 +20,7 @@ public class RandomNumberArray {
     }
     
     private int getRandomNumber(int min, int max){
-        return (int)(Math.random()*(max-min))+min;
+        Random random = new Random();
+        return random.nextInt(max+min+1)-min;
     }
 }

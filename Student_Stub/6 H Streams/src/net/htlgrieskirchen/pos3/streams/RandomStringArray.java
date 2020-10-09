@@ -6,6 +6,7 @@
 package net.htlgrieskirchen.pos3.streams;
 
 import java.util.Arrays;
+import java.util.Random;
 
 /**
  *
@@ -27,6 +28,7 @@ public class RandomStringArray {
     }
     
     private char getRandomASCIICharacter(){
-        return (char) ((int)(Math.random()*26)+26);
+        Random random = new Random();
+        return (char) ('a'+random.nextInt(26));
     }
 }

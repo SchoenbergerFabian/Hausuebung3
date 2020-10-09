@@ -6,16 +6,6 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class Streams {
-
-    private int[] numbers;
-    private String[] strings;
-    private List<Weapon> weapons;
-    
-    public Streams(){
-        numbers = new RandomNumberArray().getRandomNumberArray(1000, 0, 100);
-        strings = new RandomStringArray().getRandomStringArray(10,10);
-        weapons = new WeaponsReader().getWeaponsFromFile("weapons.csv");
-    }
     
     public double average(int[] numbers) {
         return Arrays.stream(numbers)
